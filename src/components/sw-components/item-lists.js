@@ -1,5 +1,4 @@
 import React from "react"
-
 import ItemList from "../item-list"
 import {
   withData,
@@ -39,6 +38,7 @@ const PersonList = compose(
   withData,
   withChildFunction(renderName)
 )(ItemList)
+
 const PlanetList = compose(
   withSwapiService(mapPlanetMethodsToProps),
   withData,

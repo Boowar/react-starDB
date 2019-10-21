@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-
-import { PersonList, PersonDetails } from "../sw-components"
+import { PersonDetails, PersonList } from "../sw-components"
 import Row from "../row"
 
 export default class PeoplePage extends Component {
@@ -9,13 +8,12 @@ export default class PeoplePage extends Component {
   }
 
   onItemSelected = selectedItem => {
-    this.setState({
-      selectedItem,
-    })
+    this.setState({ selectedItem })
   }
 
   render() {
     const { selectedItem } = this.state
+
     return (
       <Row
         left={<PersonList onItemSelected={this.onItemSelected} />}

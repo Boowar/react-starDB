@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import { withData } from "../hoc-helpers"
+import SwapiService from "../../services/swapi-service"
 import "./item-list.css"
 
 const ItemList = props => {
@@ -9,6 +11,7 @@ const ItemList = props => {
   const items = data.map(item => {
     const { id } = item
     const label = renderLabel(item)
+
     return (
       <li
         className='list-group-item'
@@ -30,7 +33,9 @@ ItemList.defaultProps = {
 ItemList.propTypes = {
   onItemSelected: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  chldren: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
 }
 
-export default ItemList
+const { getAllPeople } = new SwapiService()
+
+export default withData(ItemList, getAllPeople)
